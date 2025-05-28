@@ -5,6 +5,7 @@ const sedeRoutes= require ('./routes/sedeRoutes');
 const userRoutes = require ('./routes/userRoutes');
 
 
+
 app.use('/api/programaciones', programacionRoutes);
 app.use('/api/salones', salonRoutes);
 app.use('api/auth', authRoutes);

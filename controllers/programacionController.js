@@ -1,5 +1,5 @@
-const Programacion=require('.../models/Programacion');
-const validarSolapamiento= require('.../utils/validateOverlap');
+const Programacion=require('../models/Programacion');
+const validarSolapamiento= require('../utils/validateOverlap');
 
 const crearProgramacion = async (req,res) =>{
     try{
