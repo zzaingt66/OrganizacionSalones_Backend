@@ -68,6 +68,10 @@ const loginUser = asyncHandler(async (req, res) => {
   }
 });
 
+
+// @desc    Obtener perfil del usuario loguedo
+// @route   POST /api/auth/me
+// @access  Private
 const getMe = asyncHandler(async (req, res) => {
   const user = await User.findById(req.user.id).select("-password");
   if (user) {
