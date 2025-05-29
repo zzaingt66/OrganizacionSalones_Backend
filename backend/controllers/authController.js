@@ -53,7 +53,7 @@ const loginUser = asyncHandler(async (req, res) => {
   }
 
   const usuario = await User.findOne({ email });
-  valido =  await bcrypt.compare(password, usuario.password)
+  valido = await bcrypt.compare(password, usuario.password);
   if (usuario && valido) {
     res.json({
       _id: usuario._id,
@@ -68,4 +68,19 @@ const loginUser = asyncHandler(async (req, res) => {
   }
 });
 
-module.exports = { loginUser, registerUser };
+const getMe = asyncHandler(async (req, res) => {
+  const user = await User.findById(req.user.id).select("-password");
+  if (user) {
+    res.json({
+      _id: user._id,
+      name: user.name,
+      email: user.email,
+      role: user.role,
+    });
+  } else {
+    res.status(404); //Not found
+    throw new Error("Usuario no encontrado");
+  }
+});
+
+module.exports = { loginUser, registerUser, getMe };

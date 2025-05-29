@@ -1,27 +1,18 @@
 const express = require("express");
 const dotenv = require("dotenv");
 const connectDB = require("./config/db");
-const mongoose = require("mongoose");
 const cors = require("cors");
+const { errorHandler } = require("./middlewares/errorMiddleware");
+
 
 dotenv.config();
 connectDB();
 
 const app = express();
+
 app.use(express.json());
 app.use(cors());
-
-// Conexión a MongoDB
-mongoose
-  .connect(process.env.MONGO_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
-  .then(() => console.log("Conectado a MongoDB"))
-  .catch((err) => {
-    console.error("Error al conectar a MongoDB:", err.message);
-    process.exit(1);
-  });
+app.use(express.urlencoded({ extended: false }));
 
 // Rutas
 const authRoutes = require("./routes/authRoutes");
@@ -35,6 +26,8 @@ app.use("/api/usuarios", userRoutes);
 app.use("/api/sedes", sedeRoutes);
 app.use("/api/salones", salonRoutes);
 app.use("/api/programacion", programacionRoutes);
+
+app.use(errorHandler);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
