@@ -1,40 +1,48 @@
 const jwt = require("jsonwebtoken");
 const User = require("../models/user");
-const AsyncHandler = require("express-async-handler");
 
-const protect = AsyncHandler(async (req, res, next) => {
+const protect = async (req, res, next) => {
   let token;
-  const authHeader = req.headers.authorization;
+  if (
+    req.headers.authorization &&
+    req.headers.authorization.startsWith("Bearer")
+  ) {
+    try {
+      token = req.headers.authorization.split(" ")[1];
+      const decoded = jwt.verify(token, process.env.JWT_SECRET);
+      console.log(decoded);
 
-  if (!authHeader || !authHeader.startsWith("Bearer ")) {
-    return res.status(401).json({ message: "No autorizado: token faltante" });
-  }
-
-  try {
-    const token = authHeader.split(" ")[1];
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    const usuario = await User.findById(decoded.id).select("-password");
-    if (!usuario)
-      return res.status(401).json({ message: "Usuario no encontrado" });
-    next();
-  } catch (error) {
-    console.error(error);
-    return res.status(401).json({ message: "Token inválido o expirado" });
+      req.user = await User.findById(decoded.id).select("-password");
+      if (!req.user) {
+        res.status(401);
+        throw new Error("No autorizado");
+      }
+      next();
+    } catch (error) {
+      console.error(error);
+      res.status(401);
+      throw new Error("No autorizado, el token fallo o expiro");
+    }
   }
   if (!token) {
     res.status(401);
-    throw new Error("No autorizado(no token)");
+    throw new Error("no autorizado, no se proporciono un token");
   }
-});
-
-const autorizado = (...roles) => {
-  return (req, res, next) => {
-    if (!req.user || !roles.includes(req.user.role)) {
-      res.status(403);
-      throw new Error("No esta autorizado(role)");
-    }
-    next();
-  };  
 };
 
-module.exports = { protect, autorizado};
+const authorize = (...roles) => {
+  return (req, res, next) => {
+    if (!req.user) {
+      res.status(401);
+      throw new Error("No autorizado, se require iniciar sesion");
+    }
+    console.log(roles);
+    if (!roles.includes(req.user.role)) {
+      res.status(403);
+      throw new Error("Acceso denegado");
+    }
+    next();
+  };
+};
+
+module.exports = { protect, authorize };

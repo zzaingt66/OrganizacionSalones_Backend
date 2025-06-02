@@ -1,7 +1,7 @@
 const User = require('../models/user');
 const bcrypt = require ('bcryptjs');
 
-const crearUsuario=async (req,res)=>{
+const CrearAdminUser =async (req,res)=>{
     const{nombre, email, password, rol}= req.body;
 
     const existe = await User.findOne({email});

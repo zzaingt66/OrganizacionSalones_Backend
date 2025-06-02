@@ -4,8 +4,8 @@ const sedeSchema = new mongoose.Schema(
   {
     nombre: {
       type: String,
-      required: [true, "El nombre de la sede es obligatorio"],
-      enum: ["sur", "norte"],
+      required: true,
+      enum: ["Sur", "Norte", "Este"],
       unique: true,
     },
   },

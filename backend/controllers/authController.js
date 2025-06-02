@@ -1,18 +1,19 @@
 const User = require("../models/user");
 const bcrypt = require("bcryptjs");
 const generateToken = require("../utils/generateToken");
-const asyncHandler = require("express-async-handler");
+const { validationResult } = require("express-validator");
 
 //@desc Registrar usuario
 //@route POST /api/auth/register
 //@access Public
 
-const registerUser = asyncHandler(async (req, res) => {
-  const { name, email, password, role } = req.body;
-  if (!name || !email || !password) {
-    res.status(400);
-    throw new Error("Complete todos los campos");
+const registerUser = async (req, res) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ errors: errors.array() });
   }
+  const { name, email, password, role } = req.body;
+
   const userExists = await User.findOne({ email });
   if (userExists) {
     res.status(400);
@@ -38,19 +39,18 @@ const registerUser = asyncHandler(async (req, res) => {
     res.status(400);
     throw new Error("Datos invalidos");
   }
-});
+};
 
 // @desc    Inicio de sesion para el usuario
 // @route   POST /api/auth/login
 // @access  Public
 
-const loginUser = asyncHandler(async (req, res) => {
-  const { email, password } = req.body;
-
-  if (!email || !password) {
-    res.status(400);
-    throw new Error("Complete todos los campos");
+const loginUser = async (req, res) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ errors: errors.array() });
   }
+  const { email, password } = req.body;
 
   const usuario = await User.findOne({ email });
   valido = await bcrypt.compare(password, usuario.password);
@@ -66,13 +66,12 @@ const loginUser = asyncHandler(async (req, res) => {
     res.status(401);
     throw new Error("Credenciales invalidas");
   }
-});
-
+};
 
 // @desc    Obtener perfil del usuario loguedo
 // @route   POST /api/auth/me
 // @access  Private
-const getMe = asyncHandler(async (req, res) => {
+const getMe = async (req, res) => {
   const user = await User.findById(req.user.id).select("-password");
   if (user) {
     res.json({
@@ -82,9 +81,9 @@ const getMe = asyncHandler(async (req, res) => {
       role: user.role,
     });
   } else {
-    res.status(404); //Not found
+    res.status(404);
     throw new Error("Usuario no encontrado");
   }
-});
+};
 
 module.exports = { loginUser, registerUser, getMe };

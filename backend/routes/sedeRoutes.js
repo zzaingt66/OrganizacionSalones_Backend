@@ -1,13 +1,23 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
 
-const {crearSede, obtenerSedes}= require ('../controllers/sedeController');
-const {protect} = require ('../middlewares/authMiddleware');
+const {
+  crearSede,
+  obtenerSedes,
+  obtenerSedeById,
+  deleteSede,
+} = require("../controllers/sedeController");
+const { protect, authorize } = require("../middlewares/authMiddleware");
+const SedeValidatorRules = require("../validators/sedes.validator");
 
-//solo admin crea sede
-router.post('/', protect(['admin']),crearSede);
+router
+  .route("/")
+  .get(protect, obtenerSedes)
+  .post(protect, authorize("Admin", "SuperAdmin"), SedeValidatorRules, crearSede);
 
-//usuarios visualizan sedes
-router.get('/', protect(), obtenerSedes);
+router
+  .route("/:id")
+  .get(protect, obtenerSedeById)
+  .delete(protect, authorize("Admin", "SuperAdmin"), deleteSede);
 
 module.exports = router;
