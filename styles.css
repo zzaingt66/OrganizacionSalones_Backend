@@ -1,0 +1,251 @@
+/* --- ESTILOS GENERALES Y FUENTE BASE --- */
+.tit-capt0524-01,
+.tit-capt0524-01 *,
+.tit-capt0524-01 span,
+.tit-capt0524-01 div,
+.tit-capt0524-01 p,
+.tit-capt0524-01 td {
+  font-family: "Inter" !important;
+  box-sizing: border-box !important;
+}
+
+/* --- TÍTULO PRINCIPAL --- */
+/* "Transforme su tesorería en un motor estratégico de valor." */
+/* div:nth-of-type(1) y div:nth-of-type(2) son hijos del SPAN PRINCIPAL */
+.tit-capt0524-01
+  .ExternalClass4D8A21BFBF4F43E4B812B67103DCD03C
+  > span
+  > div:nth-of-type(1)
+  > span,
+.tit-capt0524-01
+  .ExternalClass4D8A21BFBF4F43E4B812B67103DCD03C
+  > span
+  > div:nth-of-type(2)
+  > span {
+  font-size: 18pt !important;
+  font-weight: bold !important;
+  color: #000000 !important;
+  line-height: 1.25 !important;
+  display: block !important;
+}
+.tit-capt0524-01
+  .ExternalClass4D8A21BFBF4F43E4B812B67103DCD03C
+  > span
+  > div:nth-of-type(1) {
+  margin-bottom: 0.1em !important;
+}
+.tit-capt0524-01
+  .ExternalClass4D8A21BFBF4F43E4B812B67103DCD03C
+  > span
+  > div:nth-of-type(2) {
+  margin-bottom: 20px !important;
+}
+
+/* --- PÁRRAFO DE INTRODUCCIÓN --- */
+/* "Complete el formulario..." */
+/* div:nth-of-type(4), (5), (6) son hijos del SPAN PRINCIPAL */
+.tit-capt0524-01
+  .ExternalClass4D8A21BFBF4F43E4B812B67103DCD03C
+  > span
+  > div:nth-of-type(4)
+  > span,
+.tit-capt0524-01
+  .ExternalClass4D8A21BFBF4F43E4B812B67103DCD03C
+  > span
+  > div:nth-of-type(5)
+  > span,
+.tit-capt0524-01
+  .ExternalClass4D8A21BFBF4F43E4B812B67103DCD03C
+  > span
+  > div:nth-of-type(6)
+  > span
+  > span {
+  /* El span interno tiene el texto */
+  font-size: 13pt !important;
+  font-weight: normal !important;
+  line-height: 1.6 !important;
+  color: #333 !important;
+}
+.tit-capt0524-01
+  .ExternalClass4D8A21BFBF4F43E4B812B67103DCD03C
+  > span
+  > div:nth-of-type(4),
+.tit-capt0524-01
+  .ExternalClass4D8A21BFBF4F43E4B812B67103DCD03C
+  > span
+  > div:nth-of-type(5) {
+  margin-bottom: 0.2em !important;
+}
+.tit-capt0524-01
+  .ExternalClass4D8A21BFBF4F43E4B812B67103DCD03C
+  > span
+  > div:nth-of-type(6) {
+  margin-bottom: 25px !important;
+}
+
+/* --- TÍTULO "¿POR QUÉ REGISTRARSE?" --- */
+/* div:nth-of-type(8) es hijo del SPAN PRINCIPAL y contiene el <p> */
+.tit-capt0524-01
+  .ExternalClass4D8A21BFBF4F43E4B812B67103DCD03C
+  > span
+  > div:nth-of-type(8)
+  p {
+  margin-top: 0 !important;
+  margin-bottom: 15px !important;
+}
+.tit-capt0524-01
+  .ExternalClass4D8A21BFBF4F43E4B812B67103DCD03C
+  > span
+  > div:nth-of-type(8)
+  p
+  > span {
+  font-size: 13pt !important;
+  font-weight: bold !important;
+  color: #000000 !important;
+}
+
+/* --- OCULTAR <br> Y DIVS DE ESPACIADO INNECESARIOS --- */
+.tit-capt0524-01
+  .ExternalClass4D8A21BFBF4F43E4B812B67103DCD03C
+  > span
+  > div:nth-of-type(3) {
+  /* <br> original después del título principal */
+  display: none !important;
+}
+.tit-capt0524-01
+  .ExternalClass4D8A21BFBF4F43E4B812B67103DCD03C
+  > span
+  > div:nth-of-type(7) {
+  /* <div> con <span><br></span> después del párrafo */
+  display: none !important;
+}
+/* Ocultar el <br> dentro del <p> de "¿Por qué registrarse?" si existe y no se necesita */
+.tit-capt0524-01
+  .ExternalClass4D8A21BFBF4F43E4B812B67103DCD03
+  > span
+  > div:nth-of-type(8)
+  p
+  > br {
+  display: none !important;
+}
+
+/* --- TABLA DE BENEFICIOS --- */
+/* table.ms-rteTable-0 es hijo del SPAN PRINCIPAL */
+.tit-capt0524-01
+  .ExternalClass4D8A21BFBF4F43E4B812B67103DCD03C
+  > span
+  > .ms-rteTable-0 {
+  width: 100% !important;
+  margin-top: 0px !important;
+  border-collapse: collapse !important;
+}
+
+.tit-capt0524-01
+  .ExternalClass4D8A21BFBF4F43E4B812B67103DCD03C
+  > span
+  > .ms-rteTable-0
+  td {
+  padding-top: 4px !important;
+  padding-bottom: 4px !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  vertical-align: middle !important;
+}
+
+/* Celda de la imagen (check) */
+.tit-capt0524-01
+  .ExternalClass4D8A21BFBF4F43E4B812B67103DCD03C
+  > span
+  > .ms-rteTable-0
+  .ms-rteTableEvenCol-0 {
+  width: 34px !important;
+  padding-right: 10px !important;
+}
+/* Div que contiene la imagen del check (para controlar su espaciado) */
+.tit-capt0524-01
+  .ExternalClass4D8A21BFBF4F43E4B812B67103DCD03C
+  > span
+  > .ms-rteTable-0
+  .ms-rteTableEvenCol-0
+  > div {
+  text-align: left !important;
+  line-height: 0 !important;
+}
+.tit-capt0524-01
+  .ExternalClass4D8A21BFBF4F43E4B812B67103DCD03C
+  > span
+  > .ms-rteTable-0
+  img {
+  width: 24px !important;
+  height: 24px !important;
+  margin: 0 !important;
+  vertical-align: top;
+  margin-top: 0 !important;
+}
+
+.tit-capt0524-01
+  .ExternalClass4D8A21BFBF4F43E4B812B67103DCD03C
+  > span
+  > .ms-rteTable-0
+  .ms-rteTableOddRow-0:nth-child(4)
+  img {
+  margin-top: 20px !important;
+}
+/* Ocultar <br> en la celda de la imagen */
+.tit-capt0524-01
+  .ExternalClass4D8A21BFBF4F43E4B812B67103DCD03C
+  > span
+  > .ms-rteTable-0
+  .ms-rteTableEvenCol-0
+  > div
+  > span
+  > br {
+  display: none !important;
+}
+
+/* Celda del texto de beneficio */
+.tit-capt0524-01
+  .ExternalClass4D8A21BFBF4F43E4B812B67103DCD03C
+  > span
+  > .ms-rteTable-0
+  .ms-rteTableOddCol-0 {
+  width: auto !important; /* Ocupa el resto del espacio */
+}
+/* Texto de los ítems de la tabla */
+.tit-capt0524-01
+  .ExternalClass4D8A21BFBF4F43E4B812B67103DCD03C
+  > span
+  > .ms-rteTable-0
+  td
+  span[style*="font-size:18px"],
+.tit-capt0524-01
+  .ExternalClass4D8A21BFBF4F43E4B812B67103DCD03C
+  > span
+  > .ms-rteTable-0
+  td
+  div
+  > span[style*="font-size:18px"] {
+  font-size: 13pt !important;
+  font-weight: normal !important;
+  line-height: 1.4 !important;
+  color: #333 !important;
+  display: inline-block !important;
+}
+
+.content-capt0524 {
+  align-items: start !important;
+}
+
+.tit-capt0524 .ms-rteTableOddRow-0 .ms-rteTableOddCol-0 {
+  font-size: 18px !important;
+}
+
+.tit-capt0524 .ms-rteTableEvenRow-0 .ms-rteTableOddCol-0 {
+  font-size: 18px !important;
+}
+
+@media (max-width: 768px) {
+  .table-container {
+    padding: 0 !important;
+  }
+}

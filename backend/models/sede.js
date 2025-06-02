@@ -5,7 +5,7 @@ const sedeSchema = new mongoose.Schema(
     nombre: {
       type: String,
       required: true,
-      enum: ["Sur", "Norte", "Este"],
+      enum: ["Sur", "Norte"],
       unique: true,
     },
   },
